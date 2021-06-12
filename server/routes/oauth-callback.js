@@ -4,6 +4,7 @@ const request = require('request');
 const config = require('../../config');
 
 router.get('/', (req, res) => {
+  console.log('fusionauth body', req.body);
   request(
     // POST request to /token endpoint
     {
@@ -23,6 +24,7 @@ router.get('/', (req, res) => {
     (error, response, body) => {
       // save token to session
       req.session.token = JSON.parse(body).access_token;
+      console.log(body);
 
       // redirect to the React app
       res.redirect(`http://localhost:${config.clientPort}`);
