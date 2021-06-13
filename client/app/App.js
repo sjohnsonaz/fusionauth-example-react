@@ -4,6 +4,7 @@ import { Greeting } from './components/Greeting.js';
 import { LogInOut } from './components/LogInOut.js';
 import { Response } from './components/Response.js';
 import { UserData } from './components/UserData.js';
+import { Refresh } from './components/Refresh';
 
 const config = require('../../config');
 
@@ -15,7 +16,7 @@ export const App = () => {
     })
       .then((response) => response.json())
       .then((response) => setBody(response));
-  });
+  }, []);
 
   const handleTextInput = (event) => {
     // update body.registration.data.userData
@@ -43,6 +44,7 @@ export const App = () => {
         <LogInOut body={body} uri={`http://localhost:${config.serverPort}`} />
       </header>
       <main>
+        <Refresh />
         <UserData body={body} handleTextInput={handleTextInput} />
         <Response body={body} />
       </main>
