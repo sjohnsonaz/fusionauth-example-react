@@ -11,9 +11,9 @@ router.post('/', (req, res) => {
       method: 'POST',
       uri: `http://localhost:${config.fusionAuthPort}/oauth2/introspect`,
       form: {
-        'client_id': config.clientID,
-        'token': req.session.token
-      }
+        client_id: config.clientID,
+        token: req.session.token,
+      },
     },
 
     // callback
@@ -26,14 +26,14 @@ router.post('/', (req, res) => {
           method: 'PATCH',
           uri: `http://localhost:${config.fusionAuthPort}/api/user/registration/${introspectResponse.sub}/${config.applicationID}`,
           headers: {
-            'Authorization': config.apiKey
+            Authorization: config.apiKey,
           },
           json: true,
           body: {
-            'registration': {
-              'data': req.body
-            }
-          }
+            registration: {
+              data: req.body,
+            },
+          },
         }
       );
     }

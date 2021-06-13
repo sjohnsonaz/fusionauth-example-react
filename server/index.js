@@ -8,24 +8,24 @@ const app = express();
 app.use(express.json());
 
 // configure sessions
-app.use(session(
-  {
+app.use(
+  session({
     secret: '1234567890',
     resave: false,
     saveUninitialized: false,
     cookie: {
       secure: 'auto',
       httpOnly: true,
-      maxAge: 3600000
-    }
+      maxAge: 3600000,
+    },
   })
 );
 
 // configure CORS
-app.use(cors(
-  {
+app.use(
+  cors({
     origin: true,
-    credentials: true
+    credentials: true,
   })
 );
 

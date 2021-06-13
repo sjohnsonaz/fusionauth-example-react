@@ -11,13 +11,13 @@ router.get('/', (req, res) => {
       method: 'POST',
       uri: `http://localhost:${config.fusionAuthPort}/oauth2/token`,
       form: {
-        'client_id': config.clientID,
-        'client_secret': config.clientSecret,
-        'code': req.query.code,
-        'code_verifier': req.session.verifier,
-        'grant_type': 'authorization_code',
-        'redirect_uri': config.redirectURI
-      }
+        client_id: config.clientID,
+        client_secret: config.clientSecret,
+        code: req.query.code,
+        code_verifier: req.session.verifier,
+        grant_type: 'authorization_code',
+        redirect_uri: config.redirectURI,
+      },
     },
 
     // callback
