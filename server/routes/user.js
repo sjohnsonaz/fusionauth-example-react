@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
         uri: `http://localhost:${config.fusionAuthPort}/oauth2/introspect`,
         form: {
           client_id: config.clientID,
-          token: req.session.token,
+          token: req.session.token.access_token,
         },
       },
 

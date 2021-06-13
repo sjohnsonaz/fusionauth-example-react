@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
 
   // Redirect the user to log in via FusionAuth
   res.redirect(
-    `http://localhost:${config.fusionAuthPort}/oauth2/authorize?client_id=${config.clientID}&redirect_uri=${config.redirectURI}&response_type=code&code_challenge=${challenge}&code_challenge_method=S256`
+    `http://localhost:${config.fusionAuthPort}/oauth2/authorize?client_id=${config.clientID}&redirect_uri=${config.redirectURI}&response_type=code&code_challenge=${challenge}&code_challenge_method=S256&scope=openid%20offline_access`
   );
 });
 

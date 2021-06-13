@@ -17,14 +17,16 @@ router.get('/', (req, res) => {
         code_verifier: req.session.verifier,
         grant_type: 'authorization_code',
         redirect_uri: config.redirectURI,
+        scope: 'openid offline_access',
       },
     },
 
     // callback
     (error, response, body) => {
+      const token = JSON.parse(body);
       // save token to session
-      req.session.token = JSON.parse(body).access_token;
-      console.log(body);
+      req.session.token = token;
+      console.log(token);
 
       // redirect to the React app
       res.redirect(`http://localhost:${config.clientPort}`);
